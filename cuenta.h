@@ -9,9 +9,9 @@
 class Cuenta 
 {
 private:
-    Taco taco[10];
-    Cebollitas cebollitas[10];
-    Awita awita[10];
+    Taco taco[4];
+    Cebollitas cebollitas[4];
+    Awita awita[4];
 
 public:
     // Constructor
@@ -21,9 +21,9 @@ public:
     void add_cebollitas(bool, int, int);
     void add_awita(std::string, int, bool, int);
 
-    void set_price_taco(float, float);
-    void set_price_cebollitas(float, float);
-    void set_price_awita(float, float);
+    void set_price_taco(float, int);
+    void set_price_cebollitas(float, int);
+    void set_price_awita(float, int);
 
     std::string print_data();
 };
@@ -42,14 +42,14 @@ void Cuenta::add_awita(std::string f, int s, bool hi, int i) {
     awita[i] = Awita(f, s, hi);
 }
 
-void Cuenta::set_price_taco(float p, float d) {
-    taco[0].set_price(p);
+void Cuenta::set_price_taco(float p, int pos) {
+    taco[pos].set_price(p);
 }
-void Cuenta::set_price_cebollitas(float p, float d) {
-    cebollitas[0].set_price(p);
+void Cuenta::set_price_cebollitas(float p, int pos) {
+    cebollitas[pos].set_price(p);
 }
-void Cuenta::set_price_awita(float p, float d) {
-    awita[0].set_price(p);
+void Cuenta::set_price_awita(float p, int pos) {
+    awita[pos].set_price(p);
 }
 
 std::string Cuenta::print_data() {

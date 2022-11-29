@@ -19,7 +19,7 @@ public:
 
     // Constructor
 
-    Taco(){};
+    Taco() {};
     Taco(bool hdt, bool hp, bool hs, bool hc, bool hca) : has_double_tortilla(hdt), has_pineapple(hp), has_salsa(hs), has_cilantro(hc), has_cebolla(hca) {};
 
     // Setters
