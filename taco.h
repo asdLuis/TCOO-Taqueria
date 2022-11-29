@@ -1,108 +1,84 @@
-#include <iostream>
 #include <string>
+#include <sstream>
+#include "articulo.h"
+#ifndef TACO_H
+#define TACO_H
 
-using namespace std;
-
-class Taco
+class Taco : public Articulo
 {
 
 private:
-    string typeOfTaco;
-    bool isCampechano;
-    int amount;
-    int price;
-    bool hasDoubleTortilla;
-    bool hasPineapple;
-    bool hasSalsa;
-    bool hasCilantro;
-    bool hasCebolla;
+
+    bool has_double_tortilla;
+    bool has_pineapple;
+    bool has_salsa;
+    bool has_cilantro;
+    bool has_cebolla;
 
 public:
-    Taco() {
-        this->typeOfTaco = "Al Pastor";
-        this->price = 15;
-        this->isCampechano = false; 
-        this->amount = 1;
-        this->hasDoubleTortilla = true;
-        this->hasPineapple = true;
-        this->hasSalsa = true;
-        this->hasCilantro = true;
-        this->hasCebolla = true;
-    }
 
-    Taco(string typeOfTaco, int price, bool isCampechano, int amount, bool hasDoubleTortilla,
-        bool hasPineapple, bool hasSalsa, bool hasCilantro, bool hasCebolla) {
-        this->typeOfTaco = typeOfTaco;
-        this->price = price;
-        this->isCampechano = isCampechano;
-        this->amount = amount;
-        this->hasDoubleTortilla = hasDoubleTortilla;
-        this->hasPineapple = hasPineapple;
-        this->hasSalsa = hasSalsa;
-        this->hasCilantro = hasCilantro;
-        this->hasCebolla = hasCebolla;
-    }
+    // Constructor
+
+    Taco(){};
+    Taco(bool hdt, bool hp, bool hs, bool hc, bool hca) : has_double_tortilla(hdt), has_pineapple(hp), has_salsa(hs), has_cilantro(hc), has_cebolla(hca) {};
 
     // Setters
-    void setTypeOfTaco(string typeOfTaco) {
-        this->typeOfTaco = typeOfTaco;
-    }
-    void setIsCampechano(bool isCampechano) {
-        this->isCampechano = isCampechano;
-    }
-    void setAmount(int amount) {
-        this->amount = amount;
-    }
-    void setHasDoubleTortilla(bool hasDoubleTortilla) {
-        this->hasDoubleTortilla = hasDoubleTortilla;
-    }
-    void setHasPineapple(bool hasPineapple) {
-        this->hasPineapple = hasPineapple;
-    }
-    void setHasSalsa(bool hasSalsa) {
-        this->hasSalsa = hasSalsa;
-    }
-    void setHasCilantro(bool hasCilantro) {
-        this->hasCilantro = hasCilantro;
-    }
-    void setHasCebolla(bool hasCebolla) {
-        this->hasCebolla = hasCebolla;
-    }
+
+    void set_has_double_tortilla(bool );
+    void set_has_pineapple(bool );
+    void set_has_salsa(bool );
+    void set_has_cilantro(bool );
+    void set_has_cebolla(bool );
 
     // Getters
-    string getTypeOfTaco() {
-        return this->typeOfTaco;
-    }
-    bool getIsCampechano() {
-        return this->isCampechano;
-    }
-    int getAmount() {
-        return this->amount;
-    }
-    bool getHasDoubleTortilla() {
-        return this->hasDoubleTortilla;
-    }
-    bool getHasPineapple() {
-        return this->hasPineapple;
-    }
-    bool getHasSalsa() {
-        return this->hasSalsa;
-    }
-    bool getHasCilantro() {
-        return this->hasCilantro;
-    }
-    bool getHasCebolla() {
-        return this->hasCebolla;
-    }
-    void displayData() {
-        cout << "Type of taco: " << this->typeOfTaco << endl;
-        cout << "Price: $" << this->price*amount << endl;
-        cout << "Is Campechano: " << this->isCampechano << endl;
-        cout << "Amount: " << this->amount << endl;
-        cout << "Has double tortilla: " << this->hasDoubleTortilla << endl;
-        cout << "Has pineapple: " << this->hasPineapple << endl;
-        cout << "Has salsa: " << this->hasSalsa << endl;
-        cout << "Has cilantro: " << this->hasCilantro << endl;
-        cout << "Has cebolla: " << this->hasCebolla << endl;
-    }
+
+    bool get_has_double_tortilla();
+    bool get_has_pineapple();
+    bool get_has_salsa();
+    bool get_has_cilantro();
+    bool get_has_cebolla();
+
+    std::string set_as_string();
 };
+
+// Method definitions
+
+void Taco::set_has_double_tortilla(bool hdt) {
+    this->has_double_tortilla = hdt;
+}
+void Taco::set_has_pineapple(bool hp) {
+    this->has_pineapple = hp;
+}
+void Taco::set_has_salsa(bool hs) {
+    this->has_salsa = hs;
+}
+void Taco::set_has_cilantro(bool hc) {
+    this->has_cilantro = hc;
+}
+void Taco::set_has_cebolla(bool hca) {
+    this->has_cebolla = hca;
+}
+
+bool Taco::get_has_double_tortilla() {
+    return has_double_tortilla;
+}
+bool Taco::get_has_pineapple() {
+    return has_pineapple;
+}
+bool Taco::get_has_salsa() {
+    return has_salsa;
+}
+bool Taco::get_has_cilantro() {
+    return has_cilantro;
+}
+bool Taco::get_has_cebolla() {
+    return has_cebolla;
+}
+
+std::string Taco::set_as_string() {
+    std::stringstream ss;
+    ss << "Taco with " << (has_double_tortilla ? "doble tortilla" : "one tortilla") << ", " << (has_pineapple ? "" : "no ") << "pineapple" << ", " << (has_salsa ? "salsa" : "no salsa") << ", " << (has_cilantro ? "cilantro" : "no cilantro") << ", " << (has_cebolla ? "" : "no ") << "cebolla.";
+    return ss.str();
+}
+
+#endif

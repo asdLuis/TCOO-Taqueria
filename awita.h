@@ -1,74 +1,60 @@
-#include <iostream>
 #include <string>
+#include <sstream>
+#include "articulo.h"
+#ifndef AWITA_H
+#define AWITA_H
 
-using namespace std;
-
-class Awita 
+class Awita : public Articulo
 {
 
 private:
-    string name;
-    int amount;
-    int price;
-    int size; // in ml
-    bool hasIce;
+    std::string flavour; // name
+    int size; // 1-2-3
+    bool hasIce; // true - false
 
 public:
-    Awita() {
-        this->name = "Agua de Horchata";
-        this->amount = 1;
-        this->price = 20;
-        this->size = 500; // in ml
-        this->hasIce = true;
-    }
-
-    Awita(string name, int amount, int price, int size, bool hasIce) {
-        this->name = name;
-        this->amount = amount;
-        this->price = price;
-        this->size = size; // in mL
-        this->hasIce = hasIce;
-    }
+    // Constructor
+    Awita(){};
+    Awita(std::string f, int s, bool hi) : flavour(f), size(s), hasIce(hi) {};
 
     // Setters
-    void setName(string name) {
-        this->name = name;
-    }
-    void setAmount(int amount) {
-        this->amount = amount;
-    }
-    void setPrice(int price) {
-        this->price = price;
-    }
-    void setSize(int size) {
-        this->size = size;
-    }
-    void setHasIce(bool hasIce) {
-        this->hasIce = hasIce;
-    }
-
+    void set_flavour(std::string );
+    void set_size(int );
+    void set_hasIce(bool );
 
     // Getters
-    string getName() {
-        return this->name;
-    }
-    int getAmount() {
-        return this->amount;
-    }
-    int getPrice() {
-        return this->price;
-    }
-    int getSize() {
-        return this->size;
-    }
-    bool getHasIce() {
-        return this->hasIce;
-    }
-    void displayData() {
-        cout << "Name: " << this->name << endl;
-        cout << "Amount: " << this->amount << endl;
-        cout << "Price: $" << this->price*amount << endl;
-        cout << "Size: " << this->size << "mL" << endl;
-        cout << "Has Ice: " << this->hasIce << endl;
-    }
+    std::string get_flavour();
+    int get_size();
+    bool get_hasIce();
+
+    std::string set_as_string();
 };
+
+// Method definitions
+
+void Awita::set_flavour(std::string f) {
+    flavour = f;
+}
+void Awita::set_size(int s) {
+    size = s;
+}
+void Awita::set_hasIce(bool hi) {
+    hasIce = hi;
+}
+
+std::string Awita::get_flavour() {
+    return flavour;
+}
+int Awita::get_size() {
+    return size;
+}
+bool Awita::get_hasIce() {
+    return hasIce;
+}
+std::string Awita::set_as_string() {
+    std::stringstream ss;
+    ss << "Awita of " << flavour << ", " << size << " L, " << (hasIce ? "with" : "without") << " ice.";
+    return ss.str();
+}
+
+#endif
