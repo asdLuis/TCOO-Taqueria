@@ -67,6 +67,7 @@ std::string Cuenta::print_data()
         total += awita[j].get_price();
         total += cebollitas[j].get_price();
     }
+    total *= 4;
 
     std::stringstream ss;
 
