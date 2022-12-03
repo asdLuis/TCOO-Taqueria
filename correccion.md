@@ -1,3 +1,3 @@
-# Tomo decisiones adecuadas para resolver un problema usando la Relacion entre clase, objeto, método y atributo.
-
-# Tomo decisiones adecuadas para resolver un problema usando Métodos y atributos.
+"Diseño clases sencillas completas (con todos los atributos y métodos requeridos).
+Avance 2" "Toma de decisiones
+SICT0302A
