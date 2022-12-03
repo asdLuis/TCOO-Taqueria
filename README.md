@@ -6,7 +6,7 @@
 
 - A traditional mexican taqueria!
 - Order your favourite tacos!
-- 
+- Enjoy!
 
 ## Context
 
